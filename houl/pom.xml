@@ -3,71 +3,41 @@
   <groupId>tddhoul</groupId>
   <artifactId>houl</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
-  <packaging>jar</packaging>
-
-  <name>real</name>
+   <packaging>jar</packaging>
+   <name>team01_week4</name>
   <url>http://maven.apache.org</url>
-	
-  <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
-	<testResources>
-      <testResource>
-        <directory>src/main/resources</directory>
-      </testResource>
-	</testResources>
+   <profiles>
+    <profile>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      
+      <id>dev</id>
+      <properties>
+        <env>dev</env>
+      </properties>
+    </profile>
     
-    <plugins>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <env>prod</env>
+      </properties>
+    </profile>
+  </profiles> 
 
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.7.6.201602180812</version>
-        <executions>
-          <execution>
-            <id>default-prepare-agent</id>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-             <configuration>
-                <!-- Sets the path to the file which contains the execution data. -->
-                <destFile>${project.build.directory}/jacoco.exec</destFile>
-                <!--
-                    Sets the name of the property containing the settings
-                    for JaCoCo runtime agent.
-                -->
-                <propertyName>surefireArgLine</propertyName>
-            </configuration>
-          </execution>
-          
-        </executions>
-      </plugin>
-   </plugins>
-   
-  </build>
-  
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <sonar.language>java</sonar.language>
-  </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-	  <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
+<dependencies>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.12</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.jacoco</groupId>
+  		<artifactId>jacoco-maven-plugin</artifactId>
+  		<version>0.7.6.201602180812</version>
+  		<type>maven-plugin</type>
+  	</dependency>
   </dependencies>
+ 
 </project>
