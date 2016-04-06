@@ -8,7 +8,7 @@
 
   <name>real</name>
   <url>http://maven.apache.org</url>
-
+	
   <build>
     <resources>
       <resource>
@@ -22,6 +22,21 @@
 	</testResources>
     
     <plugins>
+    <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.15</version>
+    <configuration>
+        <!-- Sets the VM argument line used when unit tests are run. -->
+        <argLine>${surefireArgLine}</argLine>
+        <!-- Skips unit tests if the value of skip.unit.tests property is true -->
+        <skipTests>${skip.unit.tests}</skipTests>
+        <!-- Excludes integration tests when unit tests are run. -->
+        <excludes>
+            <exclude>**/IT*.java</exclude>
+        </excludes>
+    </configuration>
+</plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
@@ -38,8 +53,18 @@
             <id>default-prepare-agent</id>
             <goals>
               <goal>prepare-agent</goal>
+             <configuration>
+                <!-- Sets the path to the file which contains the execution data. -->
+                <destFile>${project.build.directory}/target/jacoco.exec</destFile>
+                <!--
+                    Sets the name of the property containing the settings
+                    for JaCoCo runtime agent.
+                -->
+                <propertyName>surefireArgLine</propertyName>
+            </configuration>
             </goals>
           </execution>
+          
         </executions>
       </plugin>
    </plugins>
