@@ -62,9 +62,9 @@ public class Calculator {
 
 	public String result() {
 		if (money()<29.95)
-			return "�옒紐삳맂 媛믪쓣 �엯�젰�븯�뀲�뒿�땲�떎.";
+			return "잘못된 값을 입력하셨습니다.";
 		else {
-			return "湲덉븸�� $" + money() + " �엯�땲�떎.";
+			return "금액은 $" + money() + " 입니다.";
 		}
 	}
 
@@ -79,14 +79,14 @@ public class Calculator {
 			Scanner linesc = new Scanner(System.in);
 			Scanner yn = new Scanner(System.in);
 			String question;
-			logInfo.info("�벑湲됱쓣 �엯�젰�븯�꽭�슂 : Gold(1), Silver(2) : ");
+			logInfo.info("등급을 입력하세요 : Gold(1), Silver(2) :  ");
 			cal.grade = gradesc.nextInt();
-			logInfo.info("�넻�솕 �떆媛꾩쓣 �쟻�뼱二쇱꽭�슂(遺�) : ");
+			logInfo.info("통화 시간을 적어주세요(분) :  ");
 			cal.time = timesc.nextInt();
-			logInfo.info("�쉶�꽑 媛쒖닔瑜� �쟻�뼱二쇱꽭�슂 : ");
+			logInfo.info("회선 개수를 적어주세요 :  ");
 			cal.line = linesc.nextInt();
 			logInfo.info(cal.result());
-			logInfo.info("怨꾩냽 吏꾪뻾�븯�떆寃좎뒿�땲源�?(y/n) : ");
+			logInfo.info("계속 진행하시겠습니까?(y/n) : ");
 			question = yn.next();
 			logInfo.info("\n");
 			if ("n".equals(question))
